@@ -1,6 +1,6 @@
 {
   "name": "banquo",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": {
     "name": "Michael Keller",
     "email": "michael.keller@aljazeera.net",
@@ -17,6 +17,7 @@
   "main": "./src/banquo.js",
   "preferGlobal": false,
   "dependencies": {
+  	"socket.io": "0.9.6",
     "node-phantom": "~0.2.5",
     "underscore":"~1.5.2"
   }
