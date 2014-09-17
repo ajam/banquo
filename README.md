@@ -18,7 +18,7 @@ var opts = {
     url: 'america.aljazeera.com',
     viewport_width: 1440,
     delay: 1000,
-    selector: '#map-canvas'
+    selector: '#articleHighlightList-0'
 }
 banquo.capture(opts, function(image_data){
     console.log(image_data);
