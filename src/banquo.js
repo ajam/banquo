@@ -1,14 +1,12 @@
-#!/usr/bin/env node
-
 var fs            = require('fs');
 var _             = require('underscore')
 var phantom       = require('node-phantom');
 
 function banquo(opts, callback) {
   var settings = _.extend({
-    mode: 'renderBase64',
+    mode: 'base64',
     viewport_width: 1440,
-    delay: 5000,
+    delay: 1000,
     selector: 'body',
     css_file: ''
   }, opts);
