@@ -28,8 +28,27 @@ var opts = {
     selector: '#articleHighlightList-0'
 };
 
-banquo.capture(opts, function(imageData){
+banquo.capture(opts, function(errors, imageData){
     console.log(imageData);
+});
+````
+
+Or if mode is `save` and `scrape` is true you get the body markup. This behavior will be standardized in future versions. Pull request welcome.
+
+````js
+var banquo = require('banquo');
+
+var opts = {
+    mode: 'save',
+    url: 'america.aljazeera.com',
+    viewport_width: 1440,
+    delay: 1000,
+    selector: '#articleHighlightList-0',
+    scrape: true
+};
+
+banquo.capture(opts, function(errors, bodyMarkup){
+    console.log(bodyMarkup);
 });
 ````
 
@@ -43,6 +62,8 @@ viewport_width |no| 1440 | *Number (pixels)* | The desired browser width. Settin
 delay |no| 1000 | *Number (milliseconds)* | How long to wait after the page has loaded before taking the screenshot. PhantomJS apparently waits for the page to load but if you have a map or other data calculations going on, you'll need to specify a wait time.
 selector |no| `body` | *CSS selector* | The div you want to screenshot.
 css_hide |no| null | *CSS selector* | Any divs you want to hide, such as zoom buttons on map. Defaults to none.
-out_file |no| null | *string* | The name / location of the image file you want to save.
+out_file |no| null | *String* | The name / location of the image file you want to save.
+user_agent |no| null | *String* | Set a custom user-agent string.
+scrape |no| false | *Boolean* | If set to true and `mode` is `save` will return the HTML as a string. Does not work if mode is `base64`.
 
-You can set up your own service with banquo by cloning [banquo-server](http://github.com/ajam/banquo-server)
+You can set up your own service with banquo by cloning [banquo-server](http://github.com/ajam/banquo-server). *Note:* Banquo server uses an older version of Banquo. Pull request welcome.

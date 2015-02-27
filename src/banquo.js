@@ -1,3 +1,5 @@
+'use-strict';
+
 var fs            = require('fs'),
     _             = require('underscore'),
     phantom       = require('node-phantom'),
@@ -9,7 +11,9 @@ function banquo(opts, callback) {
     viewport_width: 1440,
     delay: 1000,
     selector: 'body',
-    css_file: ''
+    css_file: '',
+    scrape: false,
+    user_agent: null
   }, opts);
 
   // Append 'http://' if protocol not specified
@@ -23,10 +27,14 @@ function banquo(opts, callback) {
   }
 
   // phantomjs heavily relies on callback functions
-  var page;
-  var ph;
+  var page,
+      ph;
 
-  console.log('Requesting', settings.url);
+  // If `scape` is set, then fill this var with the innerHTML of body
+  var body_markup,
+      scrape = settings.scrape;
+
+  console.log(colors.cyan('Requesting...'), settings.url);
 
   phantom.create(createPage)
 
@@ -39,41 +47,51 @@ function banquo(opts, callback) {
     page = _page;
     page.set('onError', function() { return; });
     page.onConsoleMessage = function (msg) { console.log(msg); };
+    if (settings.user_agent){
+        page.set('settings', {
+          userAgent: settings.user_agent,
+          javascriptEnabled: true,
+          loadImages: true
+        });
+    }
     page.set('viewportSize', {width: settings.viewport_width, height: 900});
     page.open(settings.url, prepForRender);
   }
 
   function prepForRender(err, status) {
-    page.evaluate(runInPhantomBrowser, renderImage, settings.selector, css_text);
+    page.evaluate(runInPhantomBrowser, renderImage, settings.selector, css_text, scrape);
   }
 
-  function runInPhantomBrowser(selector, css_text) {
-    if (css_text) {
+  function runInPhantomBrowser(selector, cssText, scraping) {
+    var body_markup;
+    if (scraping){
+      body_markup = document.getElementsByTagName('html')[0].innerHTML;
+    }
+    if (cssText) {
       var style = document.createElement('style');
-      style.appendChild(document.createTextNode(css_text));
+      style.appendChild(document.createTextNode(cssText));
       document.head.appendChild(style);
     }
     var element = document.querySelector(selector);
-    return element.getBoundingClientRect();
+    return {rect: element.getBoundingClientRect(), markup: body_markup};
   }
 
-  function renderImage(err, rect) {
+  function renderImage(err, valsFromPage) {
+
     setTimeout(function(){
-      page.set('clipRect', rect);
+      page.set('clipRect', valsFromPage.rect);
       if (settings.mode != 'save'){
         page.renderBase64('PNG', base64Rendered);
       }else{
         page.render(settings.out_file, cleanup);
-        callback(colors.green('Writing to file... ') + settings.out_file);
+        console.log(colors.green('Writing to file... ') + settings.out_file);
+        callback(null, valsFromPage.markup);
       }
-    }, settings.delay)
+    }, settings.delay);
   }
 
-  function base64Rendered(err, image_data){
-    if (err){
-      console.log(err);
-    }
-    callback(image_data)
+  function base64Rendered(err, imageData){
+    callback(err, imageData);
     cleanup();
   }
 
