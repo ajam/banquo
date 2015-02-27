@@ -1,14 +1,13 @@
 {
   "name": "banquo",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "author": {
     "name": "Michael Keller",
     "email": "michael.keller@aljazeera.net",
     "url": "http://github.com/ajam/banquo"
   },
   "contributors": [
-    "Michael Keller",
-    "Kevin Schaul"
+    "Michael Keller"
   ],
   "repository": {
     "type": "git",
@@ -17,8 +16,9 @@
   "main": "./src/banquo.js",
   "preferGlobal": false,
   "dependencies": {
-  	"socket.io": "0.9.6",
+    "colors": "^1.0.3",
     "node-phantom": "~0.2.5",
-    "underscore":"~1.5.2"
+    "socket.io": "0.9.6",
+    "underscore": "~1.5.2"
   }
 }

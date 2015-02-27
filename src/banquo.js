@@ -1,6 +1,7 @@
-var fs            = require('fs');
-var _             = require('underscore')
-var phantom       = require('node-phantom');
+var fs            = require('fs'),
+    _             = require('underscore'),
+    phantom       = require('node-phantom'),
+    colors        = requre('colors');
 
 function banquo(opts, callback) {
   var settings = _.extend({
@@ -18,7 +19,7 @@ function banquo(opts, callback) {
 
   var css_text;
   if (settings.css_hide){
-    css_text = settings.css_file += "\n\n " + settings.css_hide + " { display: none; }\n";
+    css_text = settings.css_file += "\n\n " + settings.css_hide + " { display: none !important; }\n";
   }
 
   // phantomjs heavily relies on callback functions
@@ -40,6 +41,7 @@ function banquo(opts, callback) {
     page.onConsoleMessage = function (msg) { console.log(msg); };
     page.set('viewportSize', {width: settings.viewport_width, height: 900});
     page.open(settings.url, prepForRender);
+    // console.log(document);
   }
 
   function prepForRender(err, status) {
@@ -63,7 +65,7 @@ function banquo(opts, callback) {
         page.renderBase64('PNG', base64Rendered);
       }else{
         page.render(settings.out_file, cleanup);
-        callback('Writing to file... ' + settings.out_file);
+        callback('Writing to file... '.green + settings.out_file);
       }
     }, settings.delay)
   }
