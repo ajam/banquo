@@ -10,7 +10,7 @@ As a result, Banquo doesn't run on the command line, as Depict does, but instead
 
 ### Usage
 
-````
+````js
 var banquo = require('banquo');
 
 var opts = {
