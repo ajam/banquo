@@ -19,10 +19,11 @@ var opts = {
     viewport_width: 1440,
     delay: 1000,
     selector: '#articleHighlightList-0'
-}
-banquo.capture(opts, function(image_data){
-    console.log(image_data);
-})
+};
+
+banquo.capture(opts, function(imageData){
+    console.log(imageData);
+});
 ````
 
 ### Options
