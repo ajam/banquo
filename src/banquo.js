@@ -1,7 +1,7 @@
 var fs            = require('fs'),
     _             = require('underscore'),
     phantom       = require('node-phantom'),
-    colors        = requre('colors');
+    colors        = require('colors');
 
 function banquo(opts, callback) {
   var settings = _.extend({
@@ -41,7 +41,6 @@ function banquo(opts, callback) {
     page.onConsoleMessage = function (msg) { console.log(msg); };
     page.set('viewportSize', {width: settings.viewport_width, height: 900});
     page.open(settings.url, prepForRender);
-    // console.log(document);
   }
 
   function prepForRender(err, status) {
