@@ -1,8 +1,15 @@
-# Banquo
+Banquo
+===
 
-Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node library designed to use PhantomJS to take screenshots of interactive visualizations. Banquo is slightly different in that it is built to be called on a Node.js server and returns a base64-encoded version of the screenshot as jsonp, as opposed to saving the screenshot to a file.
+Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node library designed to use [PhantomJS](http://phantomjs.org/) to take screenshots of interactive visualizations. Banquo is slightly different in that it is built to be called on a Node.js server and returns a base64-encoded version of the screenshot as jsonp, as opposed to saving the screenshot to a file.
 
-As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like so from another Node.js script.
+As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like the example below from another Node.js script.
+
+Banquo requires PhantomJS to be installed. Due to an [unresolved bug](https://github.com/alexscheelmeyer/node-phantom/issues/115) with the latest version of PhantomJS (2.0), it currently works up to version 1.9.x. Here's how to install that version via Homebrew
+
+````sh
+brew install homebrew/versions/phantomjs198
+````
 
 ### Installation
 
