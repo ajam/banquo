@@ -64,7 +64,7 @@ function banquo(opts, callback) {
         page.renderBase64('PNG', base64Rendered);
       }else{
         page.render(settings.out_file, cleanup);
-        callback('Writing to file... '.green + settings.out_file);
+        callback(colors.green('Writing to file... ') + settings.out_file);
       }
     }, settings.delay)
   }
