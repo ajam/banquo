@@ -33,7 +33,7 @@ banquo.capture(opts, function(errors, imageData){
 });
 ````
 
-Or if mode is `save` and `scrape` is true you get the body markup. This behavior will be standardized in future versions. Pull request welcome.
+Or if mode is `save` and `scrape` is `true` you get the body markup. This behavior will be standardized in future versions so that just by setting `scrape` to `true` you'll get a third argument of the `bodyMarkup`. Pull request welcome.
 
 ````js
 var banquo = require('banquo');
