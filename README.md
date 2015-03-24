@@ -5,6 +5,7 @@ Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node lib
 
 As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like the example below from another Node.js script.
 
+**NOTE**
 Banquo requires PhantomJS to be installed. Due to an [unresolved bug](https://github.com/alexscheelmeyer/node-phantom/issues/115) with the latest version of PhantomJS (2.0), it currently works up to version 1.9.x. Here's how to install that version via Homebrew
 
 ````sh
@@ -16,6 +17,12 @@ brew install homebrew/versions/phantomjs198
 `npm install banquo`
 
 ### Usage
+
+You can set up your own service with banquo by cloning [banquo-server](http://github.com/ajam/banquo-server). 
+
+*Note: Banquo server uses an older version of Banquo. Pull request welcome.*
+
+Here's a basic standalone setup:
 
 ````js
 var banquo = require('banquo');
@@ -65,5 +72,3 @@ css_hide |no| null | *String (CSS selector)* | Any divs you want to hide, such a
 out_file |no| null | *String (File path)*| The name / location of the image file you want to save.
 user_agent |no| null | *String* | Set a custom user-agent string.
 scrape |no| false | *Boolean* | If set to true and `mode` is `save` will return the HTML as a string. Does not work if mode is `base64`.
-
-You can set up your own service with banquo by cloning [banquo-server](http://github.com/ajam/banquo-server). *Note: Banquo server uses an older version of Banquo. Pull request welcome.*
