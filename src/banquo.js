@@ -3,9 +3,11 @@
 var fs            = require('fs'),
     _             = require('underscore'),
     phantom       = require('node-phantom'),
-    colors        = require('colors');
+    chalk         = require('chalk'),
+    phantomjs     = require('phantomjs');
 
 function banquo(opts, callback) {
+  var now = new Date().toISOString.split('T')[0] // '2015-08-07T16:33:29.571Z' => '2015-08-07'
   var settings = _.extend({
     mode: 'base64',
     viewport_width: 1440,
@@ -13,7 +15,8 @@ function banquo(opts, callback) {
     selector: 'body',
     css_file: '',
     scrape: false,
-    user_agent: null
+    user_agent: null,
+    out_file: './image_'+now+'.png'
   }, opts);
 
   // Append 'http://' if protocol not specified
@@ -34,9 +37,9 @@ function banquo(opts, callback) {
   var body_markup,
       scrape = settings.scrape;
 
-  console.log(colors.cyan('Requesting...'), settings.url);
+  console.log(chalk.cyan('Requesting...'), settings.url);
 
-  phantom.create(createPage,{phantomPath:require('phantomjs').path});
+  phantom.create(createPage, {phantomPath: phantomjs.path});
 
   function createPage(err, _ph) {
     ph = _ph;
@@ -46,7 +49,7 @@ function banquo(opts, callback) {
   function openPage(err, _page) {
     page = _page;
     page.set('onError', function() { return; });
-    page.onConsoleMessage = function (msg) { console.log(msg); };
+    page.onConsoleMessage = function (msg) { console.log(chalk.orange('Phantom console msg:'), msg); };
     if (settings.user_agent){
         page.set('settings', {
           userAgent: settings.user_agent,
@@ -84,7 +87,7 @@ function banquo(opts, callback) {
         page.renderBase64('PNG', base64Rendered);
       }else{
         page.render(settings.out_file, cleanup);
-        console.log(colors.green('Writing to file... ') + settings.out_file);
+        console.log(chalk.green('Writing to file... ') + settings.out_file);
         callback(null, valsFromPage.markup);
       }
     }, settings.delay);

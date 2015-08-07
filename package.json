@@ -11,11 +11,11 @@
   },
   "main": "./src/banquo.js",
   "dependencies": {
-    "colors": "^1.0.3",
+    "chalk": "^1.1.0",
     "node-phantom": "~0.2.5",
+    "phantomjs": "^1.9.17",
     "socket.io": "0.9.6",
-    "underscore": "~1.5.2",
-    "phantomjs": "^1.9.17"
+    "underscore": "~1.5.2"
   },
   "description": "A Node.js screenshotting library using PhantomJs.",
   "bugs": {
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/ajam/banquo#readme",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "license": "MIT"
 }

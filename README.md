@@ -5,11 +5,17 @@ Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node lib
 
 As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like the example below from another Node.js script.
 
-**NOTE**: As of Banquo 0.3.0, it [no longer requires](https://github.com/ajam/banquo/pull/3) you to install PhantomJs separately. 
+*NOTE: As of Banquo 0.3.0, it [no longer requires](https://github.com/ajam/banquo/pull/3) you to install PhantomJs separately.*
 
 ### Installation
 
-`npm install banquo`
+You'll generally install this as a dependency in your `package.json`.
+
+````
+npm install banquo --save
+````
+
+If you want to install it without adding it to your `package.json`, run the command above without `--save`.
 
 ### Usage
 
@@ -30,7 +36,10 @@ var opts = {
     selector: '#articleHighlightList-0'
 };
 
-banquo.capture(opts, function(errors, imageData){
+banquo.capture(opts, function(err, imageData){
+    if (err) {
+     console.log(err)
+    }
     console.log(imageData);
 });
 ````
@@ -49,7 +58,10 @@ var opts = {
     scrape: true
 };
 
-banquo.capture(opts, function(errors, bodyMarkup){
+banquo.capture(opts, function(err, bodyMarkup){
+    if (err) {
+     console.log(err)
+    }
     console.log(bodyMarkup);
 });
 ````
@@ -64,6 +76,6 @@ viewport_width |no| 1440 | *Number (Pixels)* | The desired browser width. Settin
 delay |no| 1000 | *Number (Milliseconds)* | How long to wait after the page has loaded before taking the screenshot. PhantomJS apparently waits for the page to load but if you have a map or other data calculations going on, you'll need to specify a wait time.
 selector |no| `body` | *String (CSS selector)* | The div you want to screenshot.
 css_hide |no| null | *String (CSS selector)* | Any divs you want to hide, such as zoom buttons on map. Defaults to none.
-out_file |no| null | *String (File path)*| The name / location of the image file you want to save.
+out_file |no| './image_%Y-%m-%d.png' | *String (File path)*| The name and location of the image file you want to save. Defaults to `image_` plus the ISO year, month, day.
 user_agent |no| null | *String* | Set a custom user-agent string.
 scrape |no| false | *Boolean* | If set to true and `mode` is `save` will return the HTML as a string. Does not work if mode is `base64`.
