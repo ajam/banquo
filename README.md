@@ -5,12 +5,7 @@ Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node lib
 
 As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like the example below from another Node.js script.
 
-**NOTE**
-Banquo requires PhantomJS to be installed. Due to an [unresolved bug](https://github.com/alexscheelmeyer/node-phantom/issues/115) with the latest version of PhantomJS (2.0), it currently works up to version 1.9.x. Here's how to install that version via Homebrew
-
-````sh
-brew install homebrew/versions/phantomjs198
-````
+**NOTE**: As of Banquo 0.3.0, it [no longer requires](https://github.com/ajam/banquo/pull/3) you to install PhantomJs separately. 
 
 ### Installation
 

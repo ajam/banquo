@@ -1,25 +1,30 @@
 {
   "name": "banquo",
-  "version": "0.2.0",
-  "author": {
-    "name": "Michael Keller",
-    "email": "michael.keller@aljazeera.net",
-    "url": "http://github.com/ajam/banquo"
-  },
+  "version": "0.3.0",
+  "author": "Michael Keller <michael.keller@aljazeera.net> (http://github.com/ajam/banquo)",
   "contributors": [
     "Michael Keller"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ajam/banquo.git"
+    "url": "git+https://github.com/ajam/banquo.git"
   },
   "main": "./src/banquo.js",
-  "preferGlobal": false,
   "dependencies": {
     "colors": "^1.0.3",
     "node-phantom": "~0.2.5",
     "socket.io": "0.9.6",
     "underscore": "~1.5.2",
     "phantomjs": "^1.9.17"
-  }
+  },
+  "description": "A Node.js screenshotting library using PhantomJs.",
+  "bugs": {
+    "url": "https://github.com/ajam/banquo/issues"
+  },
+  "homepage": "https://github.com/ajam/banquo#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
 }
