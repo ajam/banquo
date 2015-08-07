@@ -19,6 +19,7 @@
     "colors": "^1.0.3",
     "node-phantom": "~0.2.5",
     "socket.io": "0.9.6",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "phantomjs": "^1.9.17"
   }
 }

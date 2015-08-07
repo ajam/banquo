@@ -36,7 +36,7 @@ function banquo(opts, callback) {
 
   console.log(colors.cyan('Requesting...'), settings.url);
 
-  phantom.create(createPage)
+  phantom.create(createPage,{phantomPath:require('phantomjs').path});
 
   function createPage(err, _ph) {
     ph = _ph;
