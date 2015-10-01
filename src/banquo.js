@@ -4,7 +4,7 @@ var fs            = require('fs'),
     _             = require('underscore'),
     phantom       = require('node-phantom'),
     chalk         = require('chalk'),
-    phantomjs     = require('phantomjs');
+    phantomjs     = require('phantomjs-webfonts');
 
 function banquo(opts, callback) {
   var now = new Date().toISOString().split('T')[0] // '2015-08-07T16:33:29.571Z' => '2015-08-07'
