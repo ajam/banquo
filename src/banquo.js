@@ -11,6 +11,7 @@ function banquo(opts, callback) {
   var settings = _.extend({
     mode: 'base64',
     viewport_width: 1440,
+    viewport_height: 900,
     delay: 1000,
     selector: 'body',
     css_file: '',
@@ -57,7 +58,7 @@ function banquo(opts, callback) {
           loadImages: true
         });
     }
-    page.set('viewportSize', {width: settings.viewport_width, height: 900});
+    page.set('viewportSize', {width: settings.viewport_width, height: settings.viewport_height});
     page.open(settings.url, prepForRender);
   }
 

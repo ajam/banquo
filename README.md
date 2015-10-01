@@ -73,6 +73,7 @@ Key | Required | Default | Options | Description
 mode |no| `base64` | `save` or `base64`  | The former will save a file to the `out_file` location and return a success string callback. The latter will return the image as a base64 string.
 url |yes| null | *String* | The website you want to screenshot.
 viewport_width |no| 1440 | *Number (Pixels)* | The desired browser width. Settings this to a higher number will increase processing time.
+viewport_height |no| 900 | *Number (Pixels)* | The desired browser height. Settings this to a higher number will increase processing time. May be useful with long scrolls in fixed height containers.
 delay |no| 1000 | *Number (Milliseconds)* | How long to wait after the page has loaded before taking the screenshot. PhantomJS apparently waits for the page to load but if you have a map or other data calculations going on, you'll need to specify a wait time.
 selector |no| `body` | *String (CSS selector)* | The div you want to screenshot.
 css_hide |no| null | *String (CSS selector)* | Any divs you want to hide, such as zoom buttons on map. Defaults to none.
