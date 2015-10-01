@@ -1,6 +1,6 @@
 {
   "name": "banquo",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Michael Keller <michael.keller@aljazeera.net> (http://github.com/ajam/banquo)",
   "contributors": [
     "Michael Keller"
@@ -13,7 +13,7 @@
   "dependencies": {
     "chalk": "^1.1.0",
     "node-phantom": "~0.2.5",
-    "phantomjs": "^1.9.17",
+    "phantomjs-webfonts": "^1.9.3",
     "socket.io": "0.9.6",
     "underscore": "~1.5.2"
   },
