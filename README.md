@@ -1,6 +1,8 @@
 Banquo
 ===
 
+**This repository is no longer being maintained. Please use [https://github.com/mhkeller/banquo2](https://github.com/mhkeller/banquo2).**
+
 Banquo builds off of [Depict](https://github.com/kevinschaul/depict), a node library designed to use [PhantomJS](http://phantomjs.org/) to take screenshots of interactive visualizations. Banquo is slightly different in that it is built to be called on a Node.js server and returns a base64-encoded version of the screenshot as jsonp, as opposed to saving the screenshot to a file.
 
 As a result, Banquo doesn't run on the command line, as Depict does, but instead is called like the example below from another Node.js script.
